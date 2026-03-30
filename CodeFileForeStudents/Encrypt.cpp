@@ -46,9 +46,15 @@ int encryptFile(char *inputFilename, char* password)
 // ENCRYPT THE FILE HERE - this is where you add code
 //////////////////////////////////////////////////////////////////////////////////////////
 
+	pwdHashIndx = 0;
+	for (i = 0; i < filesize; i++)
+	{
+		buffer[i] = buffer[i] ^ 0x00;
+	}
+
 	strcpy(outputFilename, inputFilename);
 	strcat(outputFilename, ".enc");
-
+		
 	fptrOut = fopen(outputFilename, "wb+");
 	if (fptrOut == NULL)
 	{
